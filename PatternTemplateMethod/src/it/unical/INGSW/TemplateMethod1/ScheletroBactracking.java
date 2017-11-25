@@ -21,10 +21,10 @@ public abstract class ScheletroBactracking {
 				else if (TemplateMethod_Solve()) {
 					return true;
 				}
-				removeSolution(x);
+				removeSolution();
 
-			} else
-				x++;
+			}
+			x++;
 
 		}
 		return false;
@@ -37,5 +37,5 @@ public abstract class ScheletroBactracking {
 
 	abstract void addSolution(int x);
 
-	abstract void removeSolution(int x);
+	abstract void removeSolution();
 }

@@ -8,11 +8,11 @@ class Soluzione {
 	public int UtlimaValida;
 
 	Soluzione() {
-		valore = new Vector<>();
+		valore = new Vector<>(NQueen.NQueen);
 		for (int i = 0; i < NQueen.NQueen; i++) {
 			valore.addElement(0);
 		}
-		UtlimaValida = 0;
+		UtlimaValida =-1;
 	}
 
 }
@@ -32,16 +32,15 @@ public class NQueen extends ScheletroBactracking {
 	@Override
 	boolean canAdd(int x) {
 
-		System.out.println("Entro"+x);
+		System.out.println("Entro" + x);
 
 		int cRow = sol.UtlimaValida + 1;
 		int cCol = x;
 
-		for (int pRow = 1; pRow < cRow; pRow++) {
+		for (int pRow = 0; pRow < cRow; pRow++) {
 			int pCol = sol.valore.get(pRow);
 
-			if (cCol == pCol || 
-			(cRow - pRow) == Math.abs(cCol - pCol))
+			if (cCol == pCol || ((cRow - pRow) == Math.abs(cCol - pCol)))
 				return false;
 		}
 		return true;
@@ -50,7 +49,7 @@ public class NQueen extends ScheletroBactracking {
 	@Override
 	boolean isComplete() {
 
-		System.out.println(sol.valore);
+		//System.out.println(sol.valore);
 
 		return (sol.UtlimaValida == NQueen - 1);
 	}
@@ -58,22 +57,22 @@ public class NQueen extends ScheletroBactracking {
 	@Override
 	void addSolution(int x) {
 
-			sol.UtlimaValida++;
-			sol.valore.set(sol.UtlimaValida, x);
-		
+		sol.UtlimaValida++;
+		sol.valore.set(sol.UtlimaValida, x);
+
 	}
 
 	@Override
-	void removeSolution(int x) {
+	void removeSolution() {
 		sol.UtlimaValida--;
-		x--;
+	
 	}
 
 	public static void main(String[] args) {
 
-		ScheletroBactracking nQueen = new NQueen(0, 8);
+		ScheletroBactracking nQueen = new NQueen(0, 5);
 
-		if (!nQueen.TemplateMethod_Solve())
+		if (nQueen.TemplateMethod_Solve())
 			System.out.println(sol.valore);
 		else
 			System.out.println("non va");
