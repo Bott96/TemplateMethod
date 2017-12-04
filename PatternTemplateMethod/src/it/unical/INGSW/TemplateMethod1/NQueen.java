@@ -70,7 +70,7 @@ public class NQueen extends ScheletroBactracking {
 
 	public static void main(String[] args) {
 
-		ScheletroBactracking nQueen = new NQueen(0, 5);
+		ScheletroBactracking nQueen = new NQueen(0, 7);
 
 		if (nQueen.TemplateMethod_Solve())
 			System.out.println(sol.valore);
